@@ -2,15 +2,24 @@
 
 A new Flutter project.
 
-## Getting Started
+## Lista de Requerimientos
 
-This project is a starting point for a Flutter application.
+- La aplicación mostrará todos los casos de coronavirus tanto a nivel nacional como departamental.
+- La aplicación mostrara graficos estadisticos en porcentaje de los casos de coronavirus.
+- La aplicación mostrará graficos donde se verá el crecimiento (esto de los ultimos 10 o 20 dias) de casos de coronavirus tanto a nivel nacional como departamental.
+- La aplicación mostrará tips de prevención.
+- La aplicación mostrará recomendaciones e información sobre el coronavirus.
+- La aplicación mostrará información sobre los sintomas de coronavirus.
+- La aplicación mostrará anuncios de tanto del gobierno nacional y gobierno autonomo departamental.
+- La aplicación informara números de emergencia los cuales se podrán llamar desde la aplicación.
+- PLUS: La aplicación podrá realizar un test del coronavirus. (Si es que se puede).
 
-A few resources to get you started if this is your first Flutter project:
+## Creando el proyecto
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+>```comand line
+>flutter create --androidx -a kotlin -i swift covid19
+>```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+  <img src="screenDesign/imgInicio.png" width="350" title="proyecto creado">
+</p>
