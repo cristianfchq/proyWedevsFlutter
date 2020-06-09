@@ -23,3 +23,7 @@ A new Flutter project.
 <p align="center">
   <img src="screenDesign/imgInicio.png" width="350" title="proyecto creado">
 </p>
+
+<p align="center">
+  <img src="screenDesign/disenio1.png" width="350" title="proyecto creado">
+</p>
