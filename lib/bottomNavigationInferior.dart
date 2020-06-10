@@ -59,12 +59,12 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
           icon: FaIcon(FontAwesomeIcons.newspaper, size: 25),
           title: Text('Noticias'),
         ),
-        BottomNavigationBarItem(
-          // icon: Icon(Icons.book),
-          activeIcon: FaIcon(FontAwesomeIcons.solidBookmark, size: 30),
-          icon: FaIcon(FontAwesomeIcons.bookmark, size: 25),
-          title: Text('Libros'),
-        ),
+        // BottomNavigationBarItem(
+        //   // icon: Icon(Icons.book),
+        //   activeIcon: FaIcon(FontAwesomeIcons.solidBookmark, size: 30),
+        //   icon: FaIcon(FontAwesomeIcons.bookmark, size: 25),
+        //   title: Text('Libros'),
+        // ),
       ],
       currentIndex: _selectedIndex,
       onTap: _onItemTapped,
