@@ -1,3 +1,4 @@
+import 'package:covid19/graphScreen.dart';
 import 'package:covid19/principalScreen.dart';
 import 'package:flutter/material.dart';
  
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: PrincipalScreen(),
+      home: GraphScreen(),
     );
   }
 }

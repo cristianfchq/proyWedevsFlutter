@@ -48,7 +48,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   Widget _firstParteBody() {
     return Container(
       // height: MediaQuery.of(context).size.height * 25 / 100,
-      // width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(35),
@@ -294,7 +294,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                'Hay pruebas de laboratorio que pueden identificar el virus que causa COVID-19 en muestras respiratorias. Hay pruebas de laboratorio que pueden identificar el virus que causa COVID-19 en muestras respiratorias.',
+                'Hay pruebas de laboratorio que pueden identificar el virus que causa COVID-19 en muestras respiratorias.',
                 style: GoogleFonts.notoSans(
                   textStyle: TextStyle(
                     fontWeight: FontWeight.w600,
