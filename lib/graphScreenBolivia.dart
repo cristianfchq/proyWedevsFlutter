@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GraphScreen extends StatefulWidget {
+class GraphScreenBolivia extends StatefulWidget {
   @override
-  _GraphScreenState createState() => _GraphScreenState();
+  _GraphScreenBoliviaState createState() => _GraphScreenBoliviaState();
 }
 
-class _GraphScreenState extends State<GraphScreen> {
+class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.height);

@@ -1,6 +1,7 @@
-import 'package:covid19/graphScreen.dart';
-import 'package:covid19/principalScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:covid19/principalScreen.dart';
+import 'package:covid19/graphScreenBolivia.dart';
+import 'package:covid19/bottomNavigationInferior.dart';
  
 void main() => runApp(MyApp());
  
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: GraphScreen(),
+      home: BottomNavigationInferior(),
     );
   }
 }
