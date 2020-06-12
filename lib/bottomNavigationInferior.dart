@@ -3,7 +3,7 @@ import 'package:covid19/principalScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // https://pub.dev/packages/font_awesome_flutter
-// and added 
+// and added
 // font_awesome_flutter: ^8.8.1 in the puscpec.yaml file
 
 class BottomNavigationInferior extends StatefulWidget {
@@ -19,8 +19,7 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
   final _widgetOptions = [
     PrincipalScreen(),
     GraphScreenBolivia(),
-    ContenedorPeliculas(),
-    ContenedorLibros(),
+    ContenedorNoticias(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,20 +42,20 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           // icon: Icon(Icons.),
-          activeIcon: FaIcon(FontAwesomeIcons.houseUser, size: 30),
-          icon: FaIcon(FontAwesomeIcons.home, size: 25),
+          activeIcon: FaIcon(FontAwesomeIcons.houseUser, size: 25),
+          icon: FaIcon(FontAwesomeIcons.home, size: 20),
           title: Text('Inicio'),
         ),
         BottomNavigationBarItem(
           // icon: Icon(Icons.apps),
-          activeIcon: FaIcon(FontAwesomeIcons.chartArea, size: 30),
-          icon: FaIcon(FontAwesomeIcons.chartLine, size: 25),
+          activeIcon: FaIcon(FontAwesomeIcons.chartArea, size: 25),
+          icon: FaIcon(FontAwesomeIcons.chartLine, size: 20),
           title: Text('Estadisticas'),
         ),
         BottomNavigationBarItem(
           // icon: Icon(Icons.local_movies),
-          activeIcon: FaIcon(FontAwesomeIcons.solidNewspaper, size: 30),
-          icon: FaIcon(FontAwesomeIcons.newspaper, size: 25),
+          activeIcon: FaIcon(FontAwesomeIcons.solidNewspaper, size: 25),
+          icon: FaIcon(FontAwesomeIcons.newspaper, size: 20),
           title: Text('Noticias'),
         ),
         // BottomNavigationBarItem(
@@ -69,17 +68,21 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
       currentIndex: _selectedIndex,
       onTap: _onItemTapped,
       // selectedIconTheme: IconThemeData(),
-      selectedItemColor: _selectedIndex == 2
-          ? Colors.red[800]
-          : _selectedIndex == 3 ? Colors.indigo[800] : Colors.green[800],
-      unselectedItemColor: Colors.black54,
+      selectedItemColor: _selectedIndex == 0
+          ? Color(0xFF947EF9)
+          : _selectedIndex == 1
+              ? Color(0xFF947EF9)
+              : _selectedIndex == 2 ? Color(0xFF947EF9) : Colors.green[800],
+      unselectedItemColor: Color(0xFF909090),
       unselectedLabelStyle:
-          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-      showUnselectedLabels: true,
-      iconSize: 30.0,
+          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+      iconSize: 10.0,
       type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+      selectedLabelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
       // key: Key("value"),
+      // backgroundColor: Colors.amber,
+      showUnselectedLabels: false,
+      showSelectedLabels: true,
     );
   }
 
@@ -88,49 +91,13 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
       child: _widgetOptions[_selectedIndex],
     );
   }
-
-  Widget _myAppBar() {
-    return AppBar(
-      title: Text("BottomNavigationBar"),
-    );
-  }
 }
 
-class ContenedorJuegos extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      height: 150,
-    );
-  }
-}
-
-class ContenedorApps extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      height: 150,
-    );
-  }
-}
-
-class ContenedorPeliculas extends StatelessWidget {
+class ContenedorNoticias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.indigo,
-      height: 150,
-    );
-  }
-}
-
-class ContenedorLibros extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
       height: 150,
     );
   }
