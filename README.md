@@ -25,5 +25,9 @@ A new Flutter project.
 </p>
 
 <p align="center">
-  <img src="screenDesign/disenio1.png" width="350" title="proyecto creado">
+  <img src="screenDesign/disenio1.png" width="350" title="DISEÑO 1">
+</p>
+
+<p align="center">
+  <img src="screenDesign/disenio2.png" width="350" title="DISEÑO 2">
 </p>
