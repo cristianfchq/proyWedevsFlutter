@@ -215,54 +215,70 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30),
       child: Container(
-        child: Column(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          direction: Axis.vertical,
           children: <Widget>[
-            _filaUno(),
+            // _filaUno(),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // _filaDos(),
+            _containerCases(Color(0xFF54E8FF), 'Total Casos', '2,143,703'),
             SizedBox(
               height: 20,
             ),
-            _filaDos(),
+            _containerCases(Color(0xFFFFCE47), 'Sospechosos', '1,460,404'),
+            SizedBox(
+              height: 20,
+            ),
+            _containerCases(Color(0xFF4DFF5F), 'Recuperados', '540,041'),
+            SizedBox(
+              height: 20,
+            ),
+            _containerCases(Color(0xFFFF4D4D), 'Decesos', '143,258'),
           ],
         ),
       ),
     );
   }
 
-  Widget _filaUno() {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: _containerCases(Color(0xFF54E8FF), 'Total Casos', '2,143,703'),
-        ),
-        SizedBox(
-          width: 13,
-        ),
-        Expanded(
-          child: _containerCases(Color(0xFFFFCE47), 'Sospechosos', '1,460,404'),
-        ),
-      ],
-    );
-  }
+  // Widget _filaUno() {
+  //   return Row(
+  //     children: <Widget>[
+  //       Expanded(
+  //         child: _containerCases(Color(0xFF54E8FF), 'Total Casos', '2,143,703'),
+  //       ),
+  //       SizedBox(
+  //         width: 13,
+  //       ),
+  //       Expanded(
+  //         child: _containerCases(Color(0xFFFFCE47), 'Sospechosos', '1,460,404'),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget _filaDos() {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: _containerCases(Color(0xFF4DFF5F), 'Recuperados', '540,041'),
-        ),
-        SizedBox(
-          width: 13,
-        ),
-        Expanded(
-          child: _containerCases(Color(0xFFFF4D4D), 'Decesos', '143,258'),
-        ),
-      ],
-    );
-  }
+  // Widget _filaDos() {
+  //   return Row(
+  //     children: <Widget>[
+  //       Expanded(
+  //         child: _containerCases(Color(0xFF4DFF5F), 'Recuperados', '540,041'),
+  //       ),
+  //       SizedBox(
+  //         width: 13,
+  //       ),
+  //       Expanded(
+  //         child: _containerCases(Color(0xFFFF4D4D), 'Decesos', '143,258'),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget _containerCases(
       Color colorContainer, String titleContainer, String numberCases) {
     return Container(
+      width: MediaQuery.of(context).size.width - 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: colorContainer,
@@ -271,7 +287,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
         padding:
             const EdgeInsets.only(top: 15, bottom: 15, left: 13, right: 13),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               titleContainer,

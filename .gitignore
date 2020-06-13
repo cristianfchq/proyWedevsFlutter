@@ -44,4 +44,4 @@ app.*.map.json
 
 # Package JSON
 android/app/uno.txt
-android/app/google-services.json
+# android/app/google-services.json

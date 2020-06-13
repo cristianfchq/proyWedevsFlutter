@@ -1,7 +1,9 @@
-import 'package:covid19/graphScreenBolivia.dart';
+
+import 'package:covid19/ui/views/bolivia/graphScreenBolivia.dart';
 import 'package:covid19/principalScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 // https://pub.dev/packages/font_awesome_flutter
 // and added
 // font_awesome_flutter: ^8.8.1 in the puscpec.yaml file
