@@ -4,7 +4,6 @@ import './ui/router.dart';
 import './locator.dart';
 import './core/viewmodels/CRUDModel.dart';
 
-
 void main() {
   setupLocator();
   runApp(MyApp());
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+/////
 // import 'package:flutter/material.dart';
 // import 'package:covid19/bottomNavigationInferior.dart';
 
@@ -44,3 +43,4 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+

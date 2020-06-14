@@ -16,7 +16,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<CRUDModel>(context);
-
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -25,27 +24,47 @@ class _HomeViewState extends State<HomeView> {
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: Center(child: Text('Home')),
+        centerTitle: true,
+        title: getTotalPrice(productProvider),
       ),
       body: Container(
         child: StreamBuilder(
-            stream: productProvider.fetchProductsAsStream(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasData) {
-                products = snapshot.data.documents
-                    .map((doc) => Product.fromMap(doc.data, doc.documentID))
-                    .toList();
-                return ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (buildContext, index) =>
-                      ProductCard(productDetails: products[index]),
-                );
-              } else {
-                return Text('fetching');
-              }
-            }),
+          stream: productProvider.fetchProductsAsStream(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasData) {
+              products = snapshot.data.documents
+                  .map((doc) => Product.fromMap(doc.data, doc.documentID))
+                  .toList();
+              print(products[0].price);
+              return ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (buildContext, index) =>
+                    ProductCard(productDetails: products[index]),
+              );
+            } else {
+              return Text('fetching');
+            }
+          },
+        ),
       ),
     );
-    ;
+  }
+
+  StreamBuilder<QuerySnapshot> getTotalPrice(CRUDModel productProvider) {
+    return StreamBuilder(
+      stream: productProvider.fetchProductsAsStream(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasData) {
+          products = snapshot.data.documents
+              .map((doc) => Product.fromMap(doc.data, doc.documentID))
+              .toList();
+          print(products[0].price);
+          var a  = products[0].price;
+          return Text(a);
+        } else {
+          return Text('fetching');
+        }
+      },
+    );
   }
 }
