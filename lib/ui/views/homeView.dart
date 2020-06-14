@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
               products = snapshot.data.documents
                   .map((doc) => Product.fromMap(doc.data, doc.documentID))
                   .toList();
-              print(products[0].price);
+              // print(products[0].price);
               return ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (buildContext, index) =>
@@ -58,9 +58,16 @@ class _HomeViewState extends State<HomeView> {
           products = snapshot.data.documents
               .map((doc) => Product.fromMap(doc.data, doc.documentID))
               .toList();
-          print(products[0].price);
-          var a  = products[0].price;
-          return Text(a);
+          // print(products[0].price);
+          int a = 0;
+          for (int i = 0; i<products.length ; i++){
+            a  = a + int.parse(products[i].price);
+            print(a);
+          }
+          // print(products.length);
+
+          
+          return Text(a.toString());
         } else {
           return Text('fetching');
         }
