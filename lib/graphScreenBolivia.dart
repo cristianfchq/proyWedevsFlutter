@@ -212,6 +212,46 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
 //! informacion de los casos
 
   Widget _infoCases() {
+    Text cantidadTotalCasos = Text(
+      '2,143,703',
+      style: GoogleFonts.notoSans(
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
+      ),
+    );
+    Text cantidadSospechosos = Text(
+      '1,460,404',
+      style: GoogleFonts.notoSans(
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
+      ),
+    );
+    Text cantidadRecuperados = Text(
+      '540,041',
+      style: GoogleFonts.notoSans(
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
+      ),
+    );
+    Text cantidadDecesos = Text(
+      '143,258',
+      style: GoogleFonts.notoSans(
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30),
       child: Container(
@@ -224,19 +264,19 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             //   height: 20,
             // ),
             // _filaDos(),
-            _containerCases(Color(0xFF54E8FF), 'Total Casos', '2,143,703'),
+            _containerCases(Color(0xFF54E8FF), 'Total Casos', cantidadTotalCasos),
             SizedBox(
               height: 20,
             ),
-            _containerCases(Color(0xFFFFCE47), 'Sospechosos', '1,460,404'),
+            _containerCases(Color(0xFFFFCE47), 'Sospechosos', cantidadSospechosos),
             SizedBox(
               height: 20,
             ),
-            _containerCases(Color(0xFF4DFF5F), 'Recuperados', '540,041'),
+            _containerCases(Color(0xFF4DFF5F), 'Recuperados', cantidadRecuperados),
             SizedBox(
               height: 20,
             ),
-            _containerCases(Color(0xFFFF4D4D), 'Decesos', '143,258'),
+            _containerCases(Color(0xFFFF4D4D), 'Decesos', cantidadDecesos),
           ],
         ),
       ),
@@ -276,7 +316,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
   // }
 
   Widget _containerCases(
-      Color colorContainer, String titleContainer, String numberCases) {
+      Color colorContainer, String titleContainer, Text numberCases) {
     return Container(
       width: MediaQuery.of(context).size.width - 60,
       decoration: BoxDecoration(
@@ -299,16 +339,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
                 ),
               ),
             ),
-            Text(
-              numberCases,
-              style: GoogleFonts.notoSans(
-                textStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+            numberCases,
           ],
         ),
       ),
@@ -340,18 +371,24 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
     return Container(
       child: Row(
         children: <Widget>[
-          Expanded(child: Text(''),),
+          Expanded(
+            child: Text(''),
+          ),
           _mark(Color(0xFFFFCE47), 'Sospechosos'),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           _mark(Color(0xFF4DFF5F), 'Recuperados'),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           _mark(Color(0xFFFF4D4D), 'Decesos'),
         ],
       ),
     );
   }
 
-  Widget _mark(Color color, String texto){
+  Widget _mark(Color color, String texto) {
     return Row(
       children: <Widget>[
         Container(
@@ -365,11 +402,14 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
         SizedBox(
           width: 3,
         ),
-        Text(texto, style: GoogleFonts.notoSans(
-          textStyle: TextStyle(
-            fontWeight: FontWeight.bold,
+        Text(
+          texto,
+          style: GoogleFonts.notoSans(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),),
+        ),
       ],
     );
   }
@@ -382,6 +422,4 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
       child: SvgPicture.asset("assets/svgImage/grafico.svg"),
     );
   }
-
-
 }
