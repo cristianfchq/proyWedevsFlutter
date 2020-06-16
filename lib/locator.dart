@@ -1,12 +1,17 @@
 import 'package:get_it/get_it.dart';
 
-import './core/services/api.dart';
-import './core/viewmodels/CRUDModel.dart';
+import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
+import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
 
+import 'package:covid19/core/services/apiProduct.dart';
+import 'package:covid19/core/services/apiDepartment.dart';
 
 GetIt locator = GetIt.instance;
 
 void setupLocator() {
-  locator.registerLazySingleton(() => Api('products'));
-  locator.registerLazySingleton(() => CRUDModel()) ;
+  locator.registerLazySingleton(() => ApiProduct('products'));
+  locator.registerLazySingleton(() => CRUDModelProduct()) ;
+
+  locator.registerLazySingleton(() => ApiDepartment('bolivia'));
+  locator.registerLazySingleton(() => CRUDModelDepartment()) ;
 }

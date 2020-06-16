@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
-class Api{
+class ApiProduct{
   final Firestore _db = Firestore.instance;
   final String path;
   CollectionReference ref;
 
-  Api( this.path ) {
+  ApiProduct( this.path ) {
     ref = _db.collection(path);
   }
 

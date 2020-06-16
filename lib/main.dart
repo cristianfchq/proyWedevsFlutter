@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './ui/router.dart';
 import './locator.dart';
-import './core/viewmodels/CRUDModel.dart';
+import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
 
+import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
 void main() {
   setupLocator();
   runApp(MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => locator<CRUDModel>()),
+        ChangeNotifierProvider(create: (_) => locator<CRUDModelProduct>()),
+        ChangeNotifierProvider(create: (_) => locator<CRUDModelDepartment>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

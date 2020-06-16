@@ -1,6 +1,13 @@
+import 'package:covid19/ui/widgets/departament/departamentCard.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+
+import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
+import 'package:covid19/core/models/departmentModel/departmentModel.dart';
 
 class GraphScreenBolivia extends StatefulWidget {
   @override
@@ -24,6 +31,12 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
         child: Column(
           children: <Widget>[
             _firstParteBody(),
+            // departamentos
+            Container(
+              height: 400,
+              child: _departmentCardList(),
+            ),
+            //
             Padding(
               padding: EdgeInsets.only(left: 30, top: 30),
               child: _titleGraphs(),
@@ -264,15 +277,18 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             //   height: 20,
             // ),
             // _filaDos(),
-            _containerCases(Color(0xFF54E8FF), 'Total Casos', cantidadTotalCasos),
+            _containerCases(
+                Color(0xFF54E8FF), 'Total Casos', cantidadTotalCasos),
             SizedBox(
               height: 20,
             ),
-            _containerCases(Color(0xFFFFCE47), 'Sospechosos', cantidadSospechosos),
+            _containerCases(
+                Color(0xFFFFCE47), 'Sospechosos', cantidadSospechosos),
             SizedBox(
               height: 20,
             ),
-            _containerCases(Color(0xFF4DFF5F), 'Recuperados', cantidadRecuperados),
+            _containerCases(
+                Color(0xFF4DFF5F), 'Recuperados', cantidadRecuperados),
             SizedBox(
               height: 20,
             ),
@@ -420,6 +436,33 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
     return Container(
       height: 200,
       child: SvgPicture.asset("assets/svgImage/grafico.svg"),
+    );
+  }
+
+  Widget _departmentCardList() {
+    List<Department> departamentos;
+    final productProvider = Provider.of<CRUDModelDepartment>(context);
+    return Container(
+      child: StreamBuilder(
+        stream: productProvider.fetchProductsAsStream(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasData) {
+            departamentos = snapshot.data.documents
+                .map((doc) => Department.fromMap(doc.data, doc.documentID))
+                .toList();
+            // print(products[0].price);
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: departamentos.length,
+              itemBuilder: (buildContext, index) =>
+                  DepartmentCard(departmentDetails: departamentos[index]),
+            );
+          } else {
+            return Text('fetching');
+          }
+        },
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
 import 'package:flutter/material.dart';
-import 'package:covid19/core/models/product.model.dart';
-import 'package:covid19/core/viewmodels/CRUDModel.dart';
-import 'package:covid19/ui/widgets/productCard.dart';
+import 'package:covid19/core/models/productModel/product.model.dart';
+import 'package:covid19/ui/widgets/product/productCard.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<CRUDModel>(context);
+    final productProvider = Provider.of<CRUDModelProduct>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  StreamBuilder<QuerySnapshot> getTotalPrice(CRUDModel productProvider) {
+  StreamBuilder<QuerySnapshot> getTotalPrice(CRUDModelProduct productProvider) {
     return StreamBuilder(
       stream: productProvider.fetchProductsAsStream(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -59,9 +59,9 @@ class _HomeViewState extends State<HomeView> {
               .map((doc) => Product.fromMap(doc.data, doc.documentID))
               .toList();
           // print(products[0].price);
-          int a = 0;
+          double a = 0;
           for (int i = 0; i<products.length ; i++){
-            a  = a + int.parse(products[i].price);
+            a  = a + double.parse(products[i].price);
             print(a);
           }
           // print(products.length);

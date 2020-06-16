@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:covid19/core/models/product.model.dart';
+import 'package:covid19/core/models/productModel/product.model.dart';
 import 'package:provider/provider.dart';
-import '../../core/viewmodels/CRUDModel.dart';
+import '../../../core/viewmodels/CRUDModelProduct.dart';
 class AddProduct extends StatefulWidget {
   @override
   _AddProductState createState() => _AddProductState();
@@ -15,7 +15,7 @@ class _AddProductState extends State<AddProduct> {
 
   @override
   Widget build(BuildContext context) {
-    var productProvider = Provider.of<CRUDModel>(context) ;
+    var productProvider = Provider.of<CRUDModelProduct>(context) ;
     return Scaffold(
       appBar: AppBar(
         title: Center(

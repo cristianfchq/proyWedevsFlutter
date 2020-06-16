@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../locator.dart';
-import '../services/api.dart';
-import 'package:covid19/core/models/product.model.dart';
+import '../services/apiProduct.dart';
+import 'package:covid19/core/models/productModel/product.model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CRUDModel extends ChangeNotifier {
-  Api _api = locator<Api>();
+class CRUDModelProduct extends ChangeNotifier {
+  ApiProduct _api = locator<ApiProduct>();
 
   List<Product> products;
 

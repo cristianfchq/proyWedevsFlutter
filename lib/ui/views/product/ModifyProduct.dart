@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:covid19/core/models/product.model.dart';
-import 'package:covid19/core/viewmodels/CRUDModel.dart';
+import 'package:covid19/core/models/productModel/product.model.dart';
+import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
 import 'package:provider/provider.dart';
 
 
@@ -24,7 +24,7 @@ class _ModifyProductState extends State<ModifyProduct> {
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<CRUDModel>(context);
+    final productProvider = Provider.of<CRUDModelProduct>(context);
     productType =  widget.product.img[0].toUpperCase() + widget.product.img.substring(1);
     return Scaffold(
       appBar: AppBar(
