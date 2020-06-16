@@ -4,6 +4,7 @@ class Department {
   String confirmados;
   String decesos;
   String recuperados;
+  int numero;
 
   Department({
     this.id,
@@ -11,6 +12,7 @@ class Department {
     this.confirmados,
     this.decesos,
     this.recuperados,
+    this.numero
   });
 
   Department.fromMap(Map snapshot, String id)
@@ -18,7 +20,8 @@ class Department {
         nombre = snapshot['nombre'] ?? '',
         confirmados = snapshot['confirmados'] ?? '',
         decesos = snapshot['decesos'] ?? '',
-        recuperados = snapshot['recuperados'] ?? '';
+        recuperados = snapshot['recuperados'] ?? '',
+        numero = snapshot['numero'] ?? '';
 
   toJson() {
     return {
@@ -26,6 +29,7 @@ class Department {
       "confirmados": confirmados,
       "decesos": decesos,
       "recuperados": recuperados,
+      "numero": numero,
     };
   }
 }
