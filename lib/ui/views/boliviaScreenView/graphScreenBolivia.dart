@@ -1,4 +1,3 @@
-import 'package:covid19/ui/widgets/departament/departamentCard.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
 import 'package:covid19/core/models/departmentModel/departmentModel.dart';
+import 'package:covid19/ui/widgets/departament/departamentCard.dart';
 
 class GraphScreenBolivia extends StatefulWidget {
   @override
@@ -15,6 +15,7 @@ class GraphScreenBolivia extends StatefulWidget {
 }
 
 class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
+  List<Department> department;
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.height);
@@ -49,6 +50,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
               padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
               child: _graphics(),
             ),
+            
           ],
         ),
       ),
@@ -75,17 +77,17 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             padding: const EdgeInsets.only(top: 30, left: 30),
             child: _titulo(),
           ),
-          SizedBox(
-            height: 35,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            child: _button(),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          _days(),
+          // SizedBox(
+          //   height: 35,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 30, right: 30),
+          //   child: _button(),
+          // ),
+          // SizedBox(
+          //   height: 30,
+          // ),
+          // _days(),
           SizedBox(
             height: 25,
           ),
@@ -277,22 +279,20 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             //   height: 20,
             // ),
             // _filaDos(),
-            _containerCases(
-                Color(0xFF54E8FF), 'Total Casos', cantidadTotalCasos),
+            _containerCases(Color(0xFFFFCE47), 'Casos Confirmados'),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // _containerCases(
+            //     Color(0xFF54E8FF), 'Sospechosos', cantidadSospechosos),
             SizedBox(
               height: 20,
             ),
-            _containerCases(
-                Color(0xFFFFCE47), 'Sospechosos', cantidadSospechosos),
+            _containerCases(Color(0xFF4DFF5F), 'Recuperados'),
             SizedBox(
               height: 20,
             ),
-            _containerCases(
-                Color(0xFF4DFF5F), 'Recuperados', cantidadRecuperados),
-            SizedBox(
-              height: 20,
-            ),
-            _containerCases(Color(0xFFFF4D4D), 'Decesos', cantidadDecesos),
+            _containerCases(Color(0xFFFF4D4D), 'Decesos'),
           ],
         ),
       ),
@@ -331,8 +331,8 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
   //   );
   // }
 
-  Widget _containerCases(
-      Color colorContainer, String titleContainer, Text numberCases) {
+  Widget _containerCases(Color colorContainer, String titleContainer) {
+    final departmentProvider = Provider.of<CRUDModelDepartment>(context);
     return Container(
       width: MediaQuery.of(context).size.width - 60,
       decoration: BoxDecoration(
@@ -355,7 +355,11 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
                 ),
               ),
             ),
-            numberCases,
+            titleContainer == 'Casos Confirmados'
+                ? _getTotalCasosConfirmados(departmentProvider)
+                : titleContainer == 'Recuperados'
+                    ? _getTotalCasosRecuperados(departmentProvider)
+                    : _getTotalCasosDecesos(departmentProvider),
           ],
         ),
       ),
@@ -464,5 +468,128 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
         },
       ),
     );
+  }
+
+  //! para los casos confirmados
+
+  StreamBuilder<QuerySnapshot> _getTotalCasosConfirmados(
+      CRUDModelDepartment departmentProvider) {
+    return StreamBuilder(
+      stream: departmentProvider.fetchProductsAsStream(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasData) {
+          department = snapshot.data.documents
+              .map((doc) => Department.fromMap(doc.data, doc.documentID))
+              .toList();
+          // print(products[0].price);
+          double a = 0;
+          for (int i = 0; i < department.length; i++) {
+            a = a + double.parse(department[i].confirmados);
+            print(a);
+          }
+
+          // print(products.length);
+
+          return Text(
+            numberFormat(a).split('.')[0],
+            style: GoogleFonts.notoSans(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+            ),
+          );
+        } else {
+          return Text('fetching');
+        }
+      },
+    );
+  }
+
+  //! para los casos recuperados
+
+  StreamBuilder<QuerySnapshot> _getTotalCasosRecuperados(
+      CRUDModelDepartment departmentProvider) {
+    return StreamBuilder(
+      stream: departmentProvider.fetchProductsAsStream(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasData) {
+          department = snapshot.data.documents
+              .map((doc) => Department.fromMap(doc.data, doc.documentID))
+              .toList();
+          // print(products[0].price);
+          double a = 0;
+          for (int i = 0; i < department.length; i++) {
+            a = a + double.parse(department[i].recuperados);
+            print(a);
+          }
+          // print(products.length);
+
+          return Text(
+            numberFormat(a).split('.')[0],
+            style: GoogleFonts.notoSans(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+            ),
+          );
+        } else {
+          return Text('fetching');
+        }
+      },
+    );
+  }
+
+  //! para los casos decesos
+
+  StreamBuilder<QuerySnapshot> _getTotalCasosDecesos(
+      CRUDModelDepartment departmentProvider) {
+    return StreamBuilder(
+      stream: departmentProvider.fetchProductsAsStream(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasData) {
+          department = snapshot.data.documents
+              .map((doc) => Department.fromMap(doc.data, doc.documentID))
+              .toList();
+          // print(products[0].price);
+          double a = 0;
+          for (int i = 0; i < department.length; i++) {
+            a = a + double.parse(department[i].decesos);
+            print(a);
+          }
+          // print(products.length);
+
+          return Text(
+            numberFormat(a).split('.')[0],
+            style: GoogleFonts.notoSans(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+            ),
+          );
+        } else {
+          return Text('Loading');
+        }
+      },
+    );
+  }
+
+  String numberFormat(double x) {
+    List<String> parts = x.toString().split('.');
+    RegExp re = RegExp(r'\B(?=(\d{3})+(?!\d))');
+
+    parts[0] = parts[0].replaceAll(re, ',');
+    if (parts.length == 1) {
+      parts.add('00');
+    } 
+    else {
+      parts[1] = parts[1].padRight(2, '0').substring(0, 2);
+    }
+    return parts.join('.');
   }
 }
