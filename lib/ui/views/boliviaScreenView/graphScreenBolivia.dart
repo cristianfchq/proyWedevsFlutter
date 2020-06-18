@@ -579,6 +579,8 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
     );
   }
 
+  //! para amentar las comas en los numeros
+  
   String numberFormat(double x) {
     List<String> parts = x.toString().split('.');
     RegExp re = RegExp(r'\B(?=(\d{3})+(?!\d))');

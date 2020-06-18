@@ -17,7 +17,8 @@ class DepartmentCard extends StatelessWidget {
         // Navigator.pushNamed(context, '/productDetails');
         // Navigator.pushNamed(context, "/productDetails",
         //     arguments: departmentDetails);
-        print("object");
+        Navigator.pushNamed(context, "/departmentDetails",
+            arguments: departmentDetails);
       },
       child: Padding(
         padding:
