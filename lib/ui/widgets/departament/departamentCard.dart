@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -79,8 +80,7 @@ class DepartmentCard extends StatelessWidget {
     parts[0] = parts[0].replaceAll(re, ',');
     if (parts.length == 1) {
       parts.add('00');
-    } 
-    else {
+    } else {
       parts[1] = parts[1].padRight(2, '0').substring(0, 2);
     }
     return parts.join('.');
@@ -106,9 +106,24 @@ class DepartmentCard extends StatelessWidget {
       width: 260,
       child: Column(
         children: <Widget>[
-          FadeInImage(
-            image: NetworkImage(departmentDetails.img),
-            placeholder: AssetImage('assets/jar-loading.gif'),
+          // FadeInImage(
+          //   image: NetworkImage(departmentDetails.img),
+          //   placeholder: AssetImage('assets/jar-loading.gif'),
+          //   fadeInDuration: Duration(
+          //     milliseconds: 200,
+          //   ),
+          //   height: 250.0,
+          //   fit: BoxFit.cover,
+          // ),
+          CachedNetworkImage(
+            imageUrl: departmentDetails.img,
+            placeholder: (context, url) => Container(
+              height: 250,
+              child: Image.asset(
+                'assets/jar-loading.gif',
+                fit: BoxFit.cover,
+              ),
+            ),
             fadeInDuration: Duration(
               milliseconds: 200,
             ),
@@ -165,11 +180,10 @@ class DepartmentCard extends StatelessWidget {
         color: Color(0xFFFFCE47),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+        padding:
+            const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
         child: numberCases,
       ),
     );
   }
-
-  
 }

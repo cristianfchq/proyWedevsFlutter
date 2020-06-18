@@ -463,7 +463,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
                   DepartmentCard(departmentDetails: departamentos[index]),
             );
           } else {
-            return Text('fetching');
+            return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Color(0xFF503CAA)),),);
           }
         },
       ),
@@ -501,7 +501,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Text('fetching');
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
         }
       },
     );
@@ -537,7 +537,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Text('fetching');
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
         }
       },
     );
@@ -573,14 +573,14 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Text('Loading');
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
         }
       },
     );
   }
 
   //! para amentar las comas en los numeros
-  
+
   String numberFormat(double x) {
     List<String> parts = x.toString().split('.');
     RegExp re = RegExp(r'\B(?=(\d{3})+(?!\d))');

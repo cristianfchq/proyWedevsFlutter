@@ -23,10 +23,11 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
       appBar: AppBar(
         backgroundColor: Colors.white10,
         elevation: 0,
+        centerTitle: true,
         title:
             Text(widget.departmentRecived.nombre, style: TextStyle(color: Colors.black), textAlign: TextAlign.center,),
       ),
-      body: Center(child: _body(context)),
+      body: _body(context),
     );
   }
 
@@ -34,7 +35,7 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
     final departmentProvider = Provider.of<CRUDModelDepartment>(context);
     return Column(
       children: <Widget>[
-        Text(widget.departmentRecived.id),
+        // Text(widget.departmentRecived.id),
         _getTotalCasosConfirmados(
             departmentProvider, widget.departmentRecived.id),
       ],
