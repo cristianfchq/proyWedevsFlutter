@@ -115,20 +115,23 @@ class DepartmentCard extends StatelessWidget {
           //   height: 250.0,
           //   fit: BoxFit.cover,
           // ),
-          CachedNetworkImage(
-            imageUrl: departmentDetails.img,
-            placeholder: (context, url) => Container(
-              height: 250,
-              child: Image.asset(
-                'assets/jar-loading.gif',
-                fit: BoxFit.cover,
+          Hero(
+            tag: departmentDetails.id,
+            child: CachedNetworkImage(
+              imageUrl: departmentDetails.img,
+              placeholder: (context, url) => Container(
+                height: 250,
+                child: Image.asset(
+                  'assets/jar-loading.gif',
+                  fit: BoxFit.cover,
+                ),
               ),
+              fadeInDuration: Duration(
+                milliseconds: 200,
+              ),
+              height: 250.0,
+              fit: BoxFit.cover,
             ),
-            fadeInDuration: Duration(
-              milliseconds: 200,
-            ),
-            height: 250.0,
-            fit: BoxFit.cover,
           ),
           Container(
             padding: EdgeInsets.only(top: 10),

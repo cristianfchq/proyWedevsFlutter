@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19/core/models/departmentModel/departmentModel.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -24,21 +25,96 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
         backgroundColor: Colors.white10,
         elevation: 0,
         centerTitle: true,
-        title:
-            Text(widget.departmentRecived.nombre, style: TextStyle(color: Colors.black), textAlign: TextAlign.center,),
+        title: Text(
+          widget.departmentRecived.nombre,
+          style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
       ),
       body: _body(context),
     );
   }
 
   Widget _body(BuildContext context) {
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            // Text(widget.departmentRecived.id),
+            Hero(
+              tag: widget.departmentRecived.id,
+              child: Container(
+                height: 150,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      widget.departmentRecived.img,
+                    ),
+                    fit: BoxFit.contain,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+            ),
+            _firstParteBody(),
+            Padding(
+              padding: EdgeInsets.only(left: 30, top: 30),
+              child: _titleGraphs(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: _etiquetas(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
+              child: _graphics(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //! Primera parte
+
+  Widget _firstParteBody() {
     final departmentProvider = Provider.of<CRUDModelDepartment>(context);
-    return Column(
-      children: <Widget>[
-        // Text(widget.departmentRecived.id),
-        _getTotalCasosConfirmados(
-            departmentProvider, widget.departmentRecived.id),
-      ],
+    return Container(
+      // height: MediaQuery.of(context).size.height * 25 / 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(35),
+          topRight: Radius.circular(35),
+          bottomLeft: Radius.circular(35),
+          bottomRight: Radius.circular(35),
+        ),
+        color: Color(0xFF503CAA),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 30, left: 30),
+            child: _getTotalCasosConfirmados(
+                departmentProvider, widget.departmentRecived.id),
+          ),
+          // SizedBox(
+          //   height: 35,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 30, right: 30),
+          //   child: _button(),
+          // ),
+          // SizedBox(
+          //   height: 30,
+          // ),
+          // _days(),
+          SizedBox(
+            height: 25,
+          ),
+        ],
+      ),
     );
   }
 
@@ -100,7 +176,7 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
                             .split('.')[0],
                         style: GoogleFonts.notoSans(
                           textStyle: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
@@ -109,6 +185,9 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
                     ],
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               //! contenedor casos recuperados
               Container(
@@ -138,7 +217,7 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
                             .split('.')[0],
                         style: GoogleFonts.notoSans(
                           textStyle: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
@@ -147,6 +226,9 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
                     ],
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               //! Contenedor casos decesos
               Container(
@@ -172,11 +254,10 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
                         ),
                       ),
                       Text(
-                        numberFormat(double.parse(casosDecesos))
-                            .split('.')[0],
+                        numberFormat(double.parse(casosDecesos)).split('.')[0],
                         style: GoogleFonts.notoSans(
                           textStyle: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
@@ -209,4 +290,82 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
     }
     return parts.join('.');
   }
+
+  //! grafico
+
+  Widget _titleGraphs() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Gráfico',
+          style: GoogleFonts.notoSans(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+//! marcadores active recovered deaths
+
+  Widget _etiquetas() {
+    return Container(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Text(''),
+          ),
+          _mark(Color(0xFFFFCE47), 'Sospechosos'),
+          SizedBox(
+            width: 10,
+          ),
+          _mark(Color(0xFF4DFF5F), 'Recuperados'),
+          SizedBox(
+            width: 10,
+          ),
+          _mark(Color(0xFFFF4D4D), 'Decesos'),
+        ],
+      ),
+    );
+  }
+
+  Widget _mark(Color color, String texto) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 13,
+          height: 13,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: color,
+          ),
+        ),
+        SizedBox(
+          width: 3,
+        ),
+        Text(
+          texto,
+          style: GoogleFonts.notoSans(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+//! graficos
+
+  Widget _graphics() {
+    return Container(
+      height: 200,
+      child: SvgPicture.asset("assets/svgImage/grafico.svg"),
+    );
+  }
+
 }
