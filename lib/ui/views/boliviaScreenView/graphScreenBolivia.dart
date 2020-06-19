@@ -61,7 +61,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
 
   Widget _firstParteBody() {
     return Container(
-      // height: MediaQuery.of(context).size.height * 25 / 100,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -77,17 +76,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             padding: const EdgeInsets.only(top: 30, left: 30),
             child: _titulo(),
           ),
-          // SizedBox(
-          //   height: 35,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 30, right: 30),
-          //   child: _button(),
-          // ),
-          // SizedBox(
-          //   height: 30,
-          // ),
-          // _days(),
           SizedBox(
             height: 25,
           ),
@@ -227,46 +215,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
 //! informacion de los casos
 
   Widget _infoCases() {
-    Text cantidadTotalCasos = Text(
-      '2,143,703',
-      style: GoogleFonts.notoSans(
-        textStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
-      ),
-    );
-    Text cantidadSospechosos = Text(
-      '1,460,404',
-      style: GoogleFonts.notoSans(
-        textStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
-      ),
-    );
-    Text cantidadRecuperados = Text(
-      '540,041',
-      style: GoogleFonts.notoSans(
-        textStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
-      ),
-    );
-    Text cantidadDecesos = Text(
-      '143,258',
-      style: GoogleFonts.notoSans(
-        textStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
-      ),
-    );
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30),
       child: Container(
@@ -298,38 +246,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
       ),
     );
   }
-
-  // Widget _filaUno() {
-  //   return Row(
-  //     children: <Widget>[
-  //       Expanded(
-  //         child: _containerCases(Color(0xFF54E8FF), 'Total Casos', '2,143,703'),
-  //       ),
-  //       SizedBox(
-  //         width: 13,
-  //       ),
-  //       Expanded(
-  //         child: _containerCases(Color(0xFFFFCE47), 'Sospechosos', '1,460,404'),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // Widget _filaDos() {
-  //   return Row(
-  //     children: <Widget>[
-  //       Expanded(
-  //         child: _containerCases(Color(0xFF4DFF5F), 'Recuperados', '540,041'),
-  //       ),
-  //       SizedBox(
-  //         width: 13,
-  //       ),
-  //       Expanded(
-  //         child: _containerCases(Color(0xFFFF4D4D), 'Decesos', '143,258'),
-  //       ),
-  //     ],
-  //   );
-  // }
 
   Widget _containerCases(Color colorContainer, String titleContainer) {
     final departmentProvider = Provider.of<CRUDModelDepartment>(context);
@@ -481,14 +397,11 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
           department = snapshot.data.documents
               .map((doc) => Department.fromMap(doc.data, doc.documentID))
               .toList();
-          // print(products[0].price);
           double a = 0;
           for (int i = 0; i < department.length; i++) {
             a = a + double.parse(department[i].confirmados);
             print(a);
           }
-
-          // print(products.length);
 
           return Text(
             numberFormat(a).split('.')[0],
@@ -524,7 +437,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             a = a + double.parse(department[i].recuperados);
             print(a);
           }
-          // print(products.length);
 
           return Text(
             numberFormat(a).split('.')[0],
@@ -560,7 +472,6 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             a = a + double.parse(department[i].decesos);
             print(a);
           }
-          // print(products.length);
 
           return Text(
             numberFormat(a).split('.')[0],
