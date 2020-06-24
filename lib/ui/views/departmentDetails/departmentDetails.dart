@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covid19/core/viewmodels/CRUDModelDepartment.dart';
 import 'package:flutter/material.dart';
@@ -41,22 +42,43 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
         child: Column(
           children: <Widget>[
             // Text(widget.departmentRecived.id),
+            // Hero(
+            //   tag: widget.departmentRecived.id,
+            //   child: Container(
+            //     height: 150,
+            //     decoration: BoxDecoration(
+            //       image: DecorationImage(
+            //         image: NetworkImage(
+            //           widget.departmentRecived.img,
+            //         ),
+            //         fit: BoxFit.contain,
+            //       ),
+            //       borderRadius: BorderRadius.circular(30),
+            //     ),
+            //   ),
+            // ),
             Hero(
-              tag: widget.departmentRecived.id,
-              child: Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      widget.departmentRecived.img,
-                    ),
-                    fit: BoxFit.contain,
-                  ),
-                  borderRadius: BorderRadius.circular(30),
+            tag: widget.departmentRecived.id,
+            child: CachedNetworkImage(
+              imageUrl: widget.departmentRecived.img,
+              placeholder: (context, url) => Container(
+                height: 250,
+                child: Image.asset(
+                  'assets/jar-loading.gif',
+                  fit: BoxFit.cover,
                 ),
               ),
+              fadeInDuration: Duration(
+                milliseconds: 200,
+              ),
+              height: 250.0,
+              fit: BoxFit.cover,
             ),
-            _firstParteBody(),
+          ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: _firstParteBody(),
+            ),
             Padding(
               padding: EdgeInsets.only(left: 30, top: 30),
               child: _titleGraphs(),
@@ -95,7 +117,7 @@ class _DepartmentDetailsPageState extends State<DepartmentDetailsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 30),
+            padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
             child: _getTotalCasosConfirmados(
                 departmentProvider, widget.departmentRecived.id),
           ),

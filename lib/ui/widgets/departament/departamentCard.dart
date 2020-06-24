@@ -122,15 +122,15 @@ class DepartmentCard extends StatelessWidget {
               placeholder: (context, url) => Container(
                 height: 250,
                 child: Image.asset(
-                  'assets/jar-loading.gif',
-                  fit: BoxFit.cover,
+                  'assets/Preloader_8_128x128.gif',
+                  fit: BoxFit.none,
                 ),
               ),
               fadeInDuration: Duration(
                 milliseconds: 200,
               ),
               height: 250.0,
-              fit: BoxFit.cover,
+              // fit: BoxFit.cover,
             ),
           ),
           Container(

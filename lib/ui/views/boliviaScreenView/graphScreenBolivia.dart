@@ -359,6 +359,8 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
     );
   }
 
+//! card horizontal de departamentos
+
   Widget _departmentCardList() {
     List<Department> departamentos;
     final productProvider = Provider.of<CRUDModelDepartment>(context);
@@ -414,7 +416,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),),);
         }
       },
     );
@@ -449,7 +451,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),),);
         }
       },
     );
@@ -484,7 +486,7 @@ class _GraphScreenBoliviaState extends State<GraphScreenBolivia> {
             ),
           );
         } else {
-          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white10),),);
+          return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),),);
         }
       },
     );

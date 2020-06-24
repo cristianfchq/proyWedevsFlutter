@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:covid19/ui/views/boliviaScreenView/graphScreenBolivia.dart';
 import 'package:covid19/ui/views/principalScreenView/principalScreen.dart';
+import 'package:covid19/ui/views/screenNoticias/screenNoticias.dart';
 
 // https://pub.dev/packages/font_awesome_flutter
 // and added
@@ -22,7 +23,7 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
   final _widgetOptions = [
     PrincipalScreen(),
     GraphScreenBolivia(),
-    ContenedorNoticias(),
+    ScreenNoticiasPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -96,12 +97,3 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
   }
 }
 
-class ContenedorNoticias extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.indigo,
-      height: 150,
-    );
-  }
-}

@@ -304,19 +304,19 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 ),
               ),
               SizedBox(height: 10),
-              RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Text(
-                  "Test Ahora",
-                  style: TextStyle(color: Colors.white),
-                ),
-                elevation: 10,
-                padding: EdgeInsets.all(9),
-                color: Color(0xFF503CAA),
-                onPressed: () {},
-              ),
+              // RaisedButton(
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(5),
+              //   ),
+              //   child: Text(
+              //     "Test Ahora",
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              //   elevation: 10,
+              //   padding: EdgeInsets.all(9),
+              //   color: Color(0xFF503CAA),
+              //   onPressed: () {},
+              // ),
               SizedBox(height: 20),
             ],
           ),
