@@ -23,7 +23,7 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
   final _widgetOptions = [
     PrincipalScreen(),
     GraphScreenBolivia(),
-    ScreenNoticiasPage(),
+    ScreenNoticiasPage()
   ];
 
   void _onItemTapped(int index) {

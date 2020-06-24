@@ -130,7 +130,7 @@ class DepartmentCard extends StatelessWidget {
                 milliseconds: 200,
               ),
               height: 250.0,
-              // fit: BoxFit.cover,
+              fit: BoxFit.cover,
             ),
           ),
           Container(
