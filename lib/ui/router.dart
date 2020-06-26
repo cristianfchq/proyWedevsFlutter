@@ -1,6 +1,7 @@
 import 'package:covid19/ui/views/bottomNavigationInferior.dart';
 import 'package:covid19/ui/views/departmentDetails/departmentDetails.dart';
 import 'package:covid19/ui/views/product/ModifyProduct.dart';
+import 'package:covid19/ui/views/screenNoticias/noticiasDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,6 +13,7 @@ Map<String, WidgetBuilder> getAplicationRoutes() {
   return <String, WidgetBuilder>{
     '/'                   : (BuildContext context) => BottomNavigationInferior(),
     '/departmentDetails'  : (BuildContext context) => DepartmentDetailsPage(departmentRecived: ModalRoute.of(context).settings.arguments),
+    '/noticiasDetails'    : (BuildContext context) => NoticiasDetailsPage(noticiasRecived: ModalRoute.of(context).settings.arguments),
 
     '/addProduct'         : (BuildContext context) => AddProduct(),
     '/productDetails'     : (BuildContext context) => ProductDetails(product: ModalRoute.of(context).settings.arguments),

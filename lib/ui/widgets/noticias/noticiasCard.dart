@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -87,7 +88,7 @@ class NoticiasCard extends StatelessWidget {
       // clipBehavior: Clip.antiAlias,
       // elevation: 5.0,
       // color: Colors.blue[100],
-      width: 260,
+      width: 400,
       child: Column(
         children: <Widget>[
           // FadeInImage(
@@ -105,7 +106,7 @@ class NoticiasCard extends StatelessWidget {
               placeholder: (context, url) => Container(
                 height: 250,
                 child: Image.asset(
-                  'assets/Preloader_8_128x128.gif',
+                  'assets/Preloader_5_64x164.gif',
                   fit: BoxFit.none,
                 ),
               ),
@@ -113,7 +114,7 @@ class NoticiasCard extends StatelessWidget {
                 milliseconds: 200,
               ),
               height: 250.0,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           
           Container(
@@ -131,17 +132,27 @@ class NoticiasCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                // _containerCases(cantidadTotalCasos),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
+                      enabled: false,
                       hintText: noticiasDetails.resumen,
+                      hintStyle: TextStyle(fontSize: 18, color: Colors.black54)
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                Row(
+                  children: <Widget>[
+                    Expanded(child: Text('')),
+                    FaIcon(FontAwesomeIcons.chevronCircleRight, size: 35, color: Color(0xFFFFCE47),),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15),
               ],
             ),
           ),
