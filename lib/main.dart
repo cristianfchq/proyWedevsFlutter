@@ -24,8 +24,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
-        title: 'Material App',
-        theme: ThemeData(),
+        title: 'Info-Covid',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+        ),
         routes: getAplicationRoutes(),
         onGenerateRoute: Router.generateRoute,
       ),

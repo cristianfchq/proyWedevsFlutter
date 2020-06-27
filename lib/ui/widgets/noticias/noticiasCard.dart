@@ -15,20 +15,16 @@ class NoticiasCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetails(product: productDetails)));
-        // Navigator.pushNamed(context, '/productDetails');
-        // Navigator.pushNamed(context, "/productDetails",
-        //     arguments: departmentDetails);
         Navigator.pushNamed(context, "/noticiasDetails",
             arguments: noticiasDetails);
       },
       child: Padding(
         padding:
             const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
-        child: _cardTipo2(noticiasDetails),
+        child: _cardTipo2(noticiasDetails, context),
       ),
     );
-    
+
     // GestureDetector(
     //   onTap: () {
     //     // Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetails(product: productDetails)));
@@ -80,33 +76,19 @@ class NoticiasCard extends StatelessWidget {
     // );
   }
 
-  Widget _cardTipo2(Noticias noticiasDetails) {
-    
-    
-
+  Widget _cardTipo2(Noticias noticiasDetails, BuildContext context) {
     final card = Container(
-      // clipBehavior: Clip.antiAlias,
-      // elevation: 5.0,
-      // color: Colors.blue[100],
-      width: 400,
       child: Column(
         children: <Widget>[
-          // FadeInImage(
-          //   image: NetworkImage(departmentDetails.img),
-          //   placeholder: AssetImage('assets/jar-loading.gif'),
-          //   fadeInDuration: Duration(
-          //     milliseconds: 200,
-          //   ),
-          //   height: 250.0,
-          //   fit: BoxFit.cover,
-          // ),
-        
-            CachedNetworkImage(
+          Hero(
+            tag: noticiasDetails.id + 'imagen',
+            child: CachedNetworkImage(
               imageUrl: noticiasDetails.img,
               placeholder: (context, url) => Container(
                 height: 250,
+                width: MediaQuery.of(context).size.width - 30,
                 child: Image.asset(
-                  'assets/Preloader_5_64x164.gif',
+                  'assets/Preloader_1_64x64.gif',
                   fit: BoxFit.none,
                 ),
               ),
@@ -114,20 +96,28 @@ class NoticiasCard extends StatelessWidget {
                 milliseconds: 200,
               ),
               height: 250.0,
-              fit: BoxFit.fill,
+              width: MediaQuery.of(context).size.width - 30,
+              fit: BoxFit.cover,
             ),
-          
+          ),
           Container(
             padding: EdgeInsets.only(top: 10),
             child: Column(
               children: <Widget>[
-                Text(
-                  noticiasDetails.titulo,
-                  style: GoogleFonts.notoSans(
-                    textStyle: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
+                Hero(
+                  tag: noticiasDetails.id + 'titulo',
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      noticiasDetails.titulo,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.notoSans(
+                        textStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -135,18 +125,22 @@ class NoticiasCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      enabled: false,
-                      hintText: noticiasDetails.resumen,
-                      hintStyle: TextStyle(fontSize: 18, color: Colors.black54)
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          enabled: false,
+                          hintText: noticiasDetails.resumen,
+                          hintStyle:
+                              TextStyle(fontSize: 18, color: Colors.black54)),
                     ),
-                  ),
                 ),
                 Row(
                   children: <Widget>[
                     Expanded(child: Text('')),
-                    FaIcon(FontAwesomeIcons.chevronCircleRight, size: 35, color: Color(0xFFFFCE47),),
+                    FaIcon(
+                      FontAwesomeIcons.chevronCircleRight,
+                      size: 35,
+                      color: Color(0xFFFFCE47),
+                    ),
                     SizedBox(
                       width: 15.0,
                     ),
@@ -161,6 +155,7 @@ class NoticiasCard extends StatelessWidget {
     );
     return Container(
       // child: card,
+      // width: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
         color: Colors.white,

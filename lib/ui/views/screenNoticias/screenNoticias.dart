@@ -44,7 +44,7 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
   Widget _firstParteBody() {
     return Container(
       // color: Color(0xFF503CAA),
-      color: Colors.white.withOpacity(0.0),
+      // color: Colors.white.withOpacity(0.0),
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -114,10 +114,11 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
 
   Widget _secondPartBody() {
     List<Noticias> noticias;
-    final productProvider = Provider.of<CRUDModelNoticias>(context);
+    final noticiasProvider = Provider.of<CRUDModelNoticias>(context);
     return Container(
+      // width: 500,
       child: StreamBuilder(
-        stream: productProvider.fetchProductsAsStream(),
+        stream: noticiasProvider.fetchProductsAsStream(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             noticias = snapshot.data.documents
