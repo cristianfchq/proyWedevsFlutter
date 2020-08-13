@@ -30,7 +30,7 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
               // color: Colors.yellow.withOpacity(0.5),
               height: MediaQuery.of(context).size.height - 56.0,
               child: Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.only(top: 5),
                 child: _secondPartBody(),
               ),
             ),
@@ -63,20 +63,10 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
               children: <Widget>[
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 5),
                     child: _titulo(),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                // Center(
-                //   child: Icon(
-                //     Icons.star,
-                //     color: Colors.white,
-                //     size: 35,
-                //   ),
-                // ),
                 Center(
                   child: FaIcon(
                     FontAwesomeIcons.newspaper,
@@ -85,7 +75,7 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
               ],
             ),

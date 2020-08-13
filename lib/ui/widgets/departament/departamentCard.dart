@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,50 +27,6 @@ class DepartmentCard extends StatelessWidget {
             const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
         child: _cardTipo2(departmentDetails),
       ),
-      // Padding(
-      //   padding: EdgeInsets.all(8),
-      //   child: Card(
-      //     elevation: 5,
-      //     child: Container(
-      //       height: MediaQuery.of(context).size.height * 0.45,
-      //       width: MediaQuery.of(context).size.width * 0.9,
-      //       child: Column(
-      //         children: <Widget>[
-      //           Hero(
-      //             tag: departmentDetails.id,
-      //             child: Image.asset(
-      //               'assets/pngImage/clean.png',
-      //               height: MediaQuery.of(context).size.height * 0.35,
-      //             ),
-      //           ),
-      //           Padding(
-      //             padding: EdgeInsets.all(16),
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //               children: <Widget>[
-      //                 Text(
-      //                   departmentDetails.nombre,
-      //                   style: TextStyle(
-      //                       fontWeight: FontWeight.w900,
-      //                       fontSize: 22,
-      //                       fontStyle: FontStyle.italic),
-      //                 ),
-      //                 Text(
-      //                   departmentDetails.confirmados,
-      //                   style: TextStyle(
-      //                       fontWeight: FontWeight.w900,
-      //                       fontSize: 22,
-      //                       fontStyle: FontStyle.italic,
-      //                       color: Colors.orangeAccent),
-      //                 ),
-      //               ],
-      //             ),
-      //           )
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 
@@ -103,6 +60,7 @@ class DepartmentCard extends StatelessWidget {
       // clipBehavior: Clip.antiAlias,
       // elevation: 5.0,
       // color: Colors.blue[100],
+      color: Colors.blue[50],
       width: 260,
       child: Column(
         children: <Widget>[
@@ -135,20 +93,30 @@ class DepartmentCard extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.only(top: 10),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text(
-                  'Casos Confirmados',
-                  style: GoogleFonts.notoSans(
-                    textStyle: TextStyle(
-                      color: Color(0xFFFF4D4D),
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20,
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Confirmados',
+                      style: GoogleFonts.notoSans(
+                        textStyle: TextStyle(
+                          color: Color(0xFF503CAA),
+                          // fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: 10),
+                    _containerCases(cantidadTotalCasos),
+                  ],
                 ),
-                SizedBox(height: 10),
-                _containerCases(cantidadTotalCasos),
+                FaIcon(
+                      FontAwesomeIcons.chevronCircleRight,
+                      size: 35,
+                      color: Color(0xFF503CAA),
+                    ),
               ],
             ),
           ),
@@ -159,10 +127,10 @@ class DepartmentCard extends StatelessWidget {
       // child: card,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
-        color: Colors.white,
+        color: Colors.blue[50],
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black26,
+            color: Color(0xFF503CAA),
             blurRadius: 10.0,
             spreadRadius: 2.0,
             offset: Offset(5.0, 10.0),
@@ -180,7 +148,7 @@ class DepartmentCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Color(0xFFFFCE47),
+        color: Color(0xFF503CAA),
       ),
       child: Padding(
         padding:

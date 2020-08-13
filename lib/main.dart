@@ -34,20 +34,60 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/////
+
+
+// example chart
+
+// import 'package:covid19/ui/views/chartEx/saleshomepage.dart';
 // import 'package:flutter/material.dart';
-// import 'package:covid19/bottomNavigationInferior.dart';
-
+ 
 // void main() => runApp(MyApp());
-
+ 
 // class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
-//       title: 'Material App',
-//       debugShowCheckedModeBanner: false,
-//       home: BottomNavigationInferior(),
+//       title: 'FireStore chart',
+//       theme: ThemeData(
+//         primaryColor: Color(0xff54387A),
+//       ),
+//       home: SalesHomePage(),
 //     );
 //   }
+// }
+
+// import 'package:flutter/material.Dart';
+// import 'package:url_launcher/url_launcher.Dart';
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new MaterialApp(
+//       title: 'Flutter Demo',
+//       home: new Home(),
+//     );
+//   }
+// }
+
+// class Home extends StatelessWidget {
+//   Home({Key key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) => new Scaffold(
+//         appBar: new AppBar(
+//           title: new Text("View"),
+//         ),
+//         body: new Center(
+//           child: new FlatButton(
+//               onPressed: () => launch("tel://21213123123"),
+//               child: new Text("Call me")),
+//         ),
+//       );
+// }
+
+// void main() {
+//   runApp(
+//     new MyApp(),
+//   );
 // }
 

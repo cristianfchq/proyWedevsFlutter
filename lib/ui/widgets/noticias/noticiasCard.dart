@@ -24,56 +24,6 @@ class NoticiasCard extends StatelessWidget {
         child: _cardTipo2(noticiasDetails, context),
       ),
     );
-
-    // GestureDetector(
-    //   onTap: () {
-    //     // Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetails(product: productDetails)));
-    //     // Navigator.pushNamed(context, '/productDetails');
-    //     Navigator.pushNamed(context, "/noticiasDetails",
-    //         arguments: noticiasDetails);
-    //   },
-    //   child: Padding(
-    //     padding: EdgeInsets.all(8),
-    //     child: Card(
-    //       elevation: 5,
-    //       child: Container(
-    //         // height: MediaQuery.of(context).size.height * 0.45,
-    //         width: MediaQuery.of(context).size.width * 0.9,
-    //         child: Column(
-    //           children: <Widget>[
-    //             // Hero(
-    //             //   tag: noticiasDetails.id,
-    //             //   child: Image.asset(
-    //             //     'assets/${productDetails.img}.jpg',
-    //             //     height: MediaQuery.of(context).size.height * 0.35,
-    //             //   ),
-    //             // ),
-
-    //             Text(
-    //               noticiasDetails.titulo,
-    //               textAlign: TextAlign.justify,
-    //               style: TextStyle(
-    //                 fontWeight: FontWeight.w900,
-    //                 fontSize: 22,
-    //                 fontStyle: FontStyle.italic,
-    //               ),
-    //             ),
-    //             Text(
-    //               noticiasDetails.resumen.replaceAll("rrrrr", "\n\n"),
-    //               style: TextStyle(
-    //                 fontWeight: FontWeight.w900,
-    //                 fontSize: 22,
-    //                 fontStyle: FontStyle.italic,
-    //                 color: Colors.orangeAccent,
-    //               ),
-    //               textAlign: TextAlign.justify,
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 
   Widget _cardTipo2(Noticias noticiasDetails, BuildContext context) {
@@ -85,7 +35,7 @@ class NoticiasCard extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: noticiasDetails.img,
               placeholder: (context, url) => Container(
-                height: 250,
+                height: 230,
                 width: MediaQuery.of(context).size.width - 30,
                 child: Image.asset(
                   'assets/Preloader_1_64x64.gif',
@@ -95,7 +45,7 @@ class NoticiasCard extends StatelessWidget {
               fadeInDuration: Duration(
                 milliseconds: 200,
               ),
-              height: 250.0,
+              height: 230.0,
               width: MediaQuery.of(context).size.width - 30,
               fit: BoxFit.cover,
             ),
@@ -139,7 +89,7 @@ class NoticiasCard extends StatelessWidget {
                     FaIcon(
                       FontAwesomeIcons.chevronCircleRight,
                       size: 35,
-                      color: Color(0xFFFFCE47),
+                      color: Color(0xFF503CAA),
                     ),
                     SizedBox(
                       width: 15.0,
@@ -161,7 +111,7 @@ class NoticiasCard extends StatelessWidget {
         color: Colors.white,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black26,
+            color: Color(0xFF503CAA),
             blurRadius: 10.0,
             spreadRadius: 2.0,
             offset: Offset(5.0, 10.0),

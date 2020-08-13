@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.Dart';
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -67,9 +68,14 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
             padding: const EdgeInsets.only(top: 10, left: 30, right: 20),
             child: _resumeImageSVG(),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, left: 30, right: 20),
+            child: _llamadaGratuita(),
+          ),
           SizedBox(
             height: 35,
           ),
+
         ],
       ),
     );
@@ -99,6 +105,41 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
       children: <Widget>[
         _sintomas(),
         _imageSVG(),
+      ],
+    );
+  }
+  Widget _llamadaGratuita() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+            "\nLinea Gratuita",
+            style: TextStyle(
+              color: Color(0xFFFFB306),
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.start,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, right: 15),
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Text(
+                "Llamar",
+                style: TextStyle(color: Colors.white),
+              ),
+              elevation: 10,
+              padding: EdgeInsets.all(9),
+              color: Color(0xFFFFB306),
+              onPressed: () => launch("tel:800101104"),
+            ),
+          ),
       ],
     );
   }
@@ -215,33 +256,32 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
 
   Widget _imagePrevention(String rutaImg, String name) {
     return Expanded(
-          child: Container(
-          // width: 50,
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(rutaImg),
-                    fit: BoxFit.cover,
-                  ),
+      child: Container(
+        // width: 50,
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(rutaImg),
+                  fit: BoxFit.cover,
                 ),
               ),
-              Text(
-                name,
-                style: GoogleFonts.notoSans(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13.0,
-                  ),
+            ),
+            Text(
+              name,
+              style: GoogleFonts.notoSans(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13.0,
                 ),
-                textAlign: TextAlign.center,
               ),
-            ],
-          ),
-        
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -284,7 +324,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 height: 20,
               ),
               Text(
-                'Test Covid-19',
+                'Quiere Donar Plasma ?',
                 style: GoogleFonts.notoSans(
                   textStyle: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -294,7 +334,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                'Hay pruebas de laboratorio que pueden identificar el virus que causa COVID-19 en muestras respiratorias.',
+                'La plasma tiene los anticuerpos necesarios para combatir la enfermedad. \n\nPuedes donar plasma cada 7 días. \n\nTu donación puede salvar hasta 3 vidas. ',
                 style: GoogleFonts.notoSans(
                   textStyle: TextStyle(
                     fontWeight: FontWeight.w600,
@@ -304,19 +344,19 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 ),
               ),
               SizedBox(height: 10),
-              // RaisedButton(
-              //   shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(5),
-              //   ),
-              //   child: Text(
-              //     "Test Ahora",
-              //     style: TextStyle(color: Colors.white),
-              //   ),
-              //   elevation: 10,
-              //   padding: EdgeInsets.all(9),
-              //   color: Color(0xFF503CAA),
-              //   onPressed: () {},
-              // ),
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text(
+                  "Llamar",
+                  style: TextStyle(color: Colors.white),
+                ),
+                elevation: 10,
+                padding: EdgeInsets.all(9),
+                color: Color(0xFF503CAA),
+                onPressed: () => launch("tel:69843755"),
+              ),
               SizedBox(height: 20),
             ],
           ),
