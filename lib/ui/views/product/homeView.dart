@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19/core/models/productModel/product.model.dart';
 import 'package:covid19/ui/widgets/product/productCard.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeView extends StatefulWidget {
   @override

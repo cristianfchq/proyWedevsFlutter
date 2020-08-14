@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:covid19/ui/views/boliviaScreenView/graphScreenBolivia.dart';
 import 'package:covid19/ui/views/principalScreenView/principalScreen.dart';
 import 'package:covid19/ui/views/screenNoticias/screenNoticias.dart';
+import 'package:covid19/ui/views/locate/locatePlacePage.dart';
 
 // https://pub.dev/packages/font_awesome_flutter
 // and added
@@ -24,6 +24,7 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
     PrincipalScreen(),
     GraphScreenBolivia(),
     ScreenNoticiasPage(),
+    LocatePlacePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,9 +34,8 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
   }
 
   //Todo: para ver el tamanio de un widget
-  _getSizes(){
-    final RenderBox
-    renderBoxRed = _keyNav.currentContext.findRenderObject();
+  _getSizes() {
+    final RenderBox renderBoxRed = _keyNav.currentContext.findRenderObject();
     final sizeRed = renderBoxRed.size;
     print("Size of red $sizeRed");
   }
@@ -59,7 +59,6 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
 
   //Todo: para ver el tamanio de un widget
   GlobalKey _keyNav = GlobalKey();
-  
 
   Widget _myBottomNavigationBar() {
     return Container(
@@ -85,12 +84,12 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
             icon: FaIcon(FontAwesomeIcons.newspaper, size: 20),
             title: Text('Noticias'),
           ),
-          // BottomNavigationBarItem(
-          //   // icon: Icon(Icons.book),
-          //   activeIcon: FaIcon(FontAwesomeIcons.solidBookmark, size: 30),
-          //   icon: FaIcon(FontAwesomeIcons.bookmark, size: 25),
-          //   title: Text('Libros'),
-          // ),
+          BottomNavigationBarItem(
+            // icon: Icon(Icons.local_movies),
+            activeIcon: FaIcon(FontAwesomeIcons.mapMarkedAlt, size: 25),
+            icon: FaIcon(FontAwesomeIcons.map, size: 20),
+            title: Text('Lugares'),
+          ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -99,13 +98,18 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
             ? Color(0xFF947EF9)
             : _selectedIndex == 1
                 ? Color(0xFF947EF9)
-                : _selectedIndex == 2 ? Color(0xFF947EF9) : Colors.green[800],
+                : _selectedIndex == 2
+                    ? Color(0xFF947EF9)
+                    : _selectedIndex == 3
+                        ? Color(0xFF947EF9)
+                        : Colors.green[800],
         unselectedItemColor: Color(0xFF909090),
         unselectedLabelStyle:
             TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
         iconSize: 10.0,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+        selectedLabelStyle:
+            TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
         // key: Key("value"),
         // backgroundColor: Colors.amber,
         showUnselectedLabels: false,
@@ -120,4 +124,3 @@ class _BottomNavigationInferiorState extends State<BottomNavigationInferior> {
     );
   }
 }
-

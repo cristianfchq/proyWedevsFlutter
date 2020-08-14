@@ -47,7 +47,7 @@ class NoticiasCard extends StatelessWidget {
               ),
               height: 230.0,
               width: MediaQuery.of(context).size.width - 30,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           Container(

@@ -1,3 +1,5 @@
+import 'package:covid19/core/services/apiLaboratorio.dart';
+import 'package:covid19/core/viewmodels/CRUDModelLaboratorio.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:covid19/core/viewmodels/CRUDModelProduct.dart';
@@ -19,4 +21,7 @@ void setupLocator() {
 
   locator.registerLazySingleton(() => ApiNoticias('noticias'));
   locator.registerLazySingleton(() => CRUDModelNoticias()) ;
+
+  locator.registerLazySingleton(() => ApiLaboratorio('laboratorios'));
+  locator.registerLazySingleton(() => CRUDModelLaboratorio()) ;
 }

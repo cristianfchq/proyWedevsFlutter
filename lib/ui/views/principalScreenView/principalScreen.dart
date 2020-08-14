@@ -26,8 +26,6 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         child: Column(
           children: <Widget>[
             _firstParteBody(),
-            // _firstParteBody(),
-            // _firstParteBody(),
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 30, right: 20),
               child: _subtitle(),

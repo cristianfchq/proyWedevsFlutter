@@ -53,8 +53,8 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(35),
-                bottomRight: Radius.circular(35),
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
               ),
               color: Color(0xFF503CAA),
             ),
@@ -70,7 +70,7 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
                 Center(
                   child: FaIcon(
                     FontAwesomeIcons.newspaper,
-                    size: 35,
+                    size: 30,
                     color: Colors.white,
                   ),
                 ),
@@ -93,7 +93,7 @@ class _ScreenNoticiasPageState extends State<ScreenNoticiasPage> {
           style: GoogleFonts.notoSans(
             textStyle: TextStyle(
               color: Colors.white,
-              fontSize: 30.0,
+              fontSize: 28.0,
               fontWeight: FontWeight.bold,
             ),
           ),
