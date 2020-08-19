@@ -3,19 +3,50 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:covid19/core/models/laboratorio/laboratorioModel.dart';
 
-class LaboratorioCard extends StatelessWidget {
+class LaboratorioCard extends StatefulWidget {
   final Laboratorio laboratorioDetails;
-
+  
   LaboratorioCard({@required this.laboratorioDetails});
+
+  @override
+  _LaboratorioCardState createState() => _LaboratorioCardState();
+}
+
+class _LaboratorioCardState extends State<LaboratorioCard> {
+  Future<void> _launched;
+
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
+    if (snapshot.hasError) {
+      return Text('Error: ${snapshot.error}');
+    } else {
+      return const Text('');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('asdadsadsads');
+        setState(() {
+          _launched = _launchInBrowser(widget.laboratorioDetails.ubicacion);
+        });
         // Navigator.pushNamed(
         //   context,
         //   "/noticiasDetails",
@@ -25,14 +56,15 @@ class LaboratorioCard extends StatelessWidget {
       child: Padding(
         padding:
             const EdgeInsets.only(top: 20, left: 40, right: 40, bottom: 10),
-        child: _cardTipo2(laboratorioDetails, context),
+        child: _cardTipo2(widget.laboratorioDetails, context),
       ),
     );
   }
 
   Widget _cardTipo2(Laboratorio laboratorioDetails, BuildContext context) {
     final card = Container(
-      padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 15.0, right: 15.0),
+      padding:
+          EdgeInsets.only(top: 10.0, bottom: 10.0, left: 15.0, right: 15.0),
       color: Color(0xF6F9FC),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,17 +97,12 @@ class LaboratorioCard extends StatelessWidget {
               // Text("data"),
             ],
           ),
-          // FaIcon(
-          //   FontAwesomeIcons.mapMarkedAlt,
-          //   size: 35,
-          //   color: Color(0xFF503CAA),
-          // ),
-          // Expanded(child: Text(' '),),
           Icon(
             Icons.place,
             size: 35,
             color: Color(0xFF503CAA),
           ),
+          // FutureBuilder<void>(future: _launched, builder: _launchStatus),
         ],
       ),
     );
