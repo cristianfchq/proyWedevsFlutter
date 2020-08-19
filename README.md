@@ -31,3 +31,5 @@ A new Flutter project.
 <p align="center">
   <img src="screenDesign/disenio2.png" width="350" title="DISEÑO 2">
 </p>
+
+[![Watch the video](https://github.com/cristianfchq/proyWedevsFlutter/blob/master/assets/mobizen_20200819_151354.mp4)](https://github.com/cristianfchq/proyWedevsFlutter/blob/master/assets/mobizen_20200819_151354.mp4)
